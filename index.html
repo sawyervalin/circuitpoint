@@ -12,37 +12,40 @@
         }
         
         :root {
-            --primary-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
-            --light-blue: #dbeafe;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
             --white: #ffffff;
-            --gray-bg: #f9fafb;
+            --border: #e2e8f0;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            overflow-x: hidden;
+            background: var(--white);
         }
         
-        /* Navigation */
-        nav {
+        /* Unified Header */
+        header {
             background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--border);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
         }
         
-        .nav-container {
-            max-width: 1200px;
+        .header-container {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,324 +53,283 @@
         
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-blue);
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            letter-spacing: -0.02em;
         }
         
-        .logo::before {
-            content: "⬢";
-            font-size: 1.8rem;
-            color: var(--accent-blue);
+        .logo span {
+            color: var(--accent);
         }
         
-        .nav-links {
+        nav ul {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
         
-        .nav-links a {
-            color: var(--text-dark);
+        nav a {
+            color: var(--text-medium);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            transition: color 0.2s;
         }
         
-        .nav-links a:hover {
-            color: var(--accent-blue);
+        nav a:hover {
+            color: var(--accent);
         }
         
-        .cta-button {
-            background: var(--accent-blue);
+        .btn-primary {
+            background: var(--accent);
             color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            padding: 0.625rem 1.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-size: 0.95rem;
+            transition: all 0.2s;
         }
         
-        .cta-button:hover {
-            background: var(--primary-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 0.5rem;
-            cursor: pointer;
-        }
-        
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-dark);
-            transition: all 0.3s ease;
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
-            padding: 8rem 2rem 4rem;
+            padding: 8rem 2rem 5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: var(--white);
-            position: relative;
-            overflow: hidden;
+            margin-top: 73px;
         }
         
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        
-        .hero-content {
-            max-width: 1200px;
+        .hero-container {
+            max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 4rem;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
         
-        .hero-text h1 {
-            font-size: 3rem;
-            line-height: 1.2;
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
         
-        .hero-text p {
+        .hero p {
             font-size: 1.25rem;
+            color: #cbd5e1;
             margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease;
+            line-height: 1.7;
         }
         
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            animation: fadeInUp 1.2s ease;
         }
         
-        .hero-buttons .cta-button {
+        .btn-white {
             background: var(--white);
-            color: var(--primary-blue);
-        }
-        
-        .hero-buttons .secondary-button {
-            background: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            color: var(--primary);
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: all 0.2s;
         }
         
-        .hero-buttons .secondary-button:hover {
-            background: var(--white);
-            color: var(--primary-blue);
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        .hero-image {
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 0.875rem 2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
         }
         
-        .hero-image .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .icon-card {
+        .btn-outline:hover {
+            border-color: var(--white);
             background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
         }
         
-        .icon-card:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-        
-        .icon-card i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Features Bar */
-        .features-bar {
-            background: var(--white);
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-top: -2rem;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
         
-        .feature-item {
-            text-align: center;
-            animation: fadeIn 1s ease;
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
-        .feature-item .icon {
-            font-size: 2rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature-item h3 {
-            font-size: 1rem;
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
             margin-bottom: 0.25rem;
         }
         
-        .feature-item p {
-            font-size: 0.875rem;
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .trust-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .trust-container p {
             color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            color: var(--text-medium);
+        }
+        
+        .badge-icon {
+            font-size: 1.5rem;
         }
         
         /* Services Section */
         .services {
-            padding: 5rem 2rem;
-            background: var(--gray-bg);
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+        
+        .services-container {
+            max-width: 1280px;
+            margin: 0 auto;
         }
         
         .section-header {
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            margin-bottom: 4rem;
         }
         
         .section-header h2 {
             font-size: 2.5rem;
-            color: var(--primary-blue);
+            color: var(--primary);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
         
         .section-header p {
             font-size: 1.125rem;
-            color: var(--text-light);
+            color: var(--text-medium);
         }
         
         .services-grid {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
         
         .service-card {
-            background: var(--white);
+            background: var(--bg-light);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--primary-blue));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--accent);
         }
         
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-card .icon {
-            width: 60px;
-            height: 60px;
-            background: var(--light-blue);
-            border-radius: 50%;
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--white);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--accent-blue);
+            font-size: 1.75rem;
             margin-bottom: 1.5rem;
         }
         
         .service-card h3 {
             font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
         }
         
         .service-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
         
         .service-card ul {
             list-style: none;
+            margin-top: 1rem;
         }
         
-        .service-card ul li {
-            padding: 0.5rem 0;
-            color: var(--text-dark);
-            position: relative;
+        .service-card li {
+            color: var(--text-light);
             padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            font-size: 0.95rem;
         }
         
-        .service-card ul li::before {
-            content: "✓";
+        .service-card li::before {
+            content: "→";
             position: absolute;
             left: 0;
-            color: var(--accent-blue);
-            font-weight: bold;
+            color: var(--accent);
         }
         
-        /* Why Choose Us */
-        .why-us {
-            padding: 5rem 2rem;
-            background: var(--white);
+        /* Why Choose Section */
+        .why-choose {
+            padding: 6rem 2rem;
+            background: var(--bg-light);
         }
         
-        .why-us-content {
-            max-width: 1200px;
+        .why-container {
+            max-width: 1280px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -375,412 +337,339 @@
             align-items: center;
         }
         
-        .why-us-text h2 {
+        .why-content h2 {
             font-size: 2.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
         
-        .value-prop {
+        .why-content p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
             margin-bottom: 2rem;
-            padding-left: 3rem;
-            position: relative;
+            line-height: 1.7;
         }
         
-        .value-prop .icon {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 40px;
-            height: 40px;
-            background: var(--light-blue);
-            border-radius: 50%;
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-blue);
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
         
-        .value-prop h3 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
+        .feature-text h3 {
+            font-size: 1.125rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
         }
         
-        .value-prop p {
-            color: var(--text-light);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, var(--light-blue), transparent);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .stat-card .number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-card .label {
-            color: var(--text-light);
+        .feature-text p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin: 0;
         }
         
         /* Contact Section */
         .contact {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
-            color: var(--white);
-            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--white);
         }
         
-        .contact-content {
-            max-width: 800px;
+        .contact-container {
+            max-width: 900px;
             margin: 0 auto;
+            text-align: center;
         }
         
         .contact h2 {
             font-size: 2.5rem;
+            color: var(--primary);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
         
-        .contact p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+        .contact > p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            margin-bottom: 3rem;
         }
         
-        .contact-info {
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin: 3rem 0;
+            margin-bottom: 3rem;
         }
         
-        .contact-item {
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            transition: all 0.3s ease;
+        .contact-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
         
-        .contact-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
-        }
-        
-        .contact-item i {
-            font-size: 1.5rem;
+        .contact-card-icon {
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
         
-        .contact-item h4 {
+        .contact-card h3 {
+            font-size: 1rem;
+            color: var(--text-light);
             margin-bottom: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-card p {
+            color: var(--primary);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0;
         }
         
         /* Footer */
         footer {
-            background: var(--text-dark);
+            background: var(--primary);
             color: var(--white);
             padding: 2rem;
             text-align: center;
         }
         
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        footer p {
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
         
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-        
-        /* Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: flex;
-            }
-            
-            .hero-content {
+            .hero-container, .why-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-            
-            .features-container {
-                grid-template-columns: repeat(2, 1fr);
             }
             
             .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .why-us-content {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-            
-            .icon-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+            nav ul {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo">CircuitPoint</a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-us">Why Us</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#contact" class="cta-button">Get Started</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <!-- Unified Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Circuit<span>Point</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact" class="btn-primary">Get Started</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Your Trusted IT Partner in La Verne</h1>
-                <p>Transparent, cost-effective IT solutions with white-glove support. We're always here when you need us.</p>
+    <section class="hero">
+        <div class="hero-container">
+            <div>
+                <h1>Transparent IT Solutions for Modern Businesses</h1>
+                <p>No hidden fees. No surprises. Just reliable technology support that helps your Southern California business thrive.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Start Saving Today</a>
-                    <a href="#services" class="secondary-button">Explore Services</a>
+                    <a href="#contact" class="btn-white">Schedule Consultation</a>
+                    <a href="#services" class="btn-outline">Our Services</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="icon-grid">
-                    <div class="icon-card">
-                        <i>🔒</i>
-                        <div>Security</div>
-                    </div>
-                    <div class="icon-card">
-                        <i>☁️</i>
-                        <div>Cloud</div>
-                    </div>
-                    <div class="icon-card">
-                        <i>📊</i>
-                        <div>Analytics</div>
-                    </div>
-                    <div class="icon-card">
-                        <i>🛡️</i>
-                        <div>Protection</div>
-                    </div>
-                    <div class="icon-card">
-                        <i>🚀</i>
-                        <div>Performance</div>
-                    </div>
-                    <div class="icon-card">
-                        <i>💼</i>
-                        <div>Strategy</div>
-                    </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">Cost Savings</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">&lt;15min</div>
+                    <div class="stat-label">Response Time</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Bar -->
-    <section class="features-bar">
-        <div class="features-container">
-            <div class="feature-item">
-                <div class="icon">⏰</div>
-                <h3>24/7 Availability</h3>
-                <p>Always here when you need us</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon">🤝</div>
-                <h3>True Partnership</h3>
-                <p>Your success is our mission</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon">💎</div>
-                <h3>White Glove Service</h3>
-                <p>Premium support, every time</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon">📈</div>
-                <h3>Cost Savings</h3>
-                <p>Efficiency through transparency</p>
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <p>Trusted by businesses across Southern California</p>
+            <div class="trust-badges">
+                <div class="badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Certified Secure</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>Fast Response</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">💎</span>
+                    <span>Premium Service</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">📍</span>
+                    <span>Local Team</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-header">
-            <h2>Comprehensive IT Solutions</h2>
-            <p>From day-to-day support to strategic leadership, we've got you covered</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon">💻</div>
-                <h3>Managed IT Services</h3>
-                <p>Complete IT management and support for your business</p>
-                <ul>
-                    <li>24/7 monitoring & support</li>
-                    <li>Help desk services</li>
-                    <li>Network management</li>
-                    <li>Backup & disaster recovery</li>
-                </ul>
+        <div class="services-container">
+            <div class="section-header">
+                <h2>Comprehensive IT Solutions</h2>
+                <p>Everything your business needs to stay secure and efficient</p>
             </div>
-            <div class="service-card">
-                <div class="icon">🎯</div>
-                <h3>IT Advisory Services</h3>
-                <p>Strategic technology consulting to drive your business forward</p>
-                <ul>
-                    <li>Technology roadmapping</li>
-                    <li>Digital transformation</li>
-                    <li>Vendor management</li>
-                    <li>IT budget optimization</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="icon">👔</div>
-                <h3>Fractional CIO/CTO</h3>
-                <p>Executive-level IT leadership without the full-time cost</p>
-                <ul>
-                    <li>Strategic planning</li>
-                    <li>Team leadership</li>
-                    <li>Technology governance</li>
-                    <li>Board presentations</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="icon">🔒</div>
-                <h3>Cybersecurity</h3>
-                <p>Comprehensive security solutions to protect your business</p>
-                <ul>
-                    <li>Security assessments</li>
-                    <li>Threat monitoring</li>
-                    <li>Compliance management</li>
-                    <li>Employee training</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="icon">☁️</div>
-                <h3>Cloud Solutions</h3>
-                <p>Seamless cloud migration and management services</p>
-                <ul>
-                    <li>Cloud strategy</li>
-                    <li>Migration services</li>
-                    <li>Cloud optimization</li>
-                    <li>Hybrid solutions</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="icon">📱</div>
-                <h3>Infrastructure Management</h3>
-                <p>Keep your IT infrastructure running at peak performance</p>
-                <ul>
-                    <li>Server management</li>
-                    <li>Network optimization</li>
-                    <li>Hardware lifecycle</li>
-                    <li>Performance monitoring</li>
-                </ul>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Managed IT Services</h3>
+                    <p>Complete IT management and support for your business</p>
+                    <ul>
+                        <li>24/7 monitoring & support</li>
+                        <li>Help desk services</li>
+                        <li>Network management</li>
+                        <li>Backup & disaster recovery</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>IT Advisory Services</h3>
+                    <p>Strategic technology consulting to drive growth</p>
+                    <ul>
+                        <li>Technology roadmapping</li>
+                        <li>Digital transformation</li>
+                        <li>Vendor management</li>
+                        <li>IT budget optimization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Fractional CIO/CTO</h3>
+                    <p>Executive IT leadership without full-time cost</p>
+                    <ul>
+                        <li>Strategic planning</li>
+                        <li>Team leadership</li>
+                        <li>Technology governance</li>
+                        <li>Board presentations</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from digital threats</p>
+                    <ul>
+                        <li>Security assessments</li>
+                        <li>Threat monitoring</li>
+                        <li>Compliance management</li>
+                        <li>Employee training</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Seamless cloud migration and management</p>
+                    <ul>
+                        <li>Cloud strategy</li>
+                        <li>Migration services</li>
+                        <li>Cloud optimization</li>
+                        <li>Hybrid solutions</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Infrastructure Management</h3>
+                    <p>Keep your IT running at peak performance</p>
+                    <ul>
+                        <li>Server management</li>
+                        <li>Network optimization</li>
+                        <li>Hardware lifecycle</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="why-us" id="why-us">
-        <div class="why-us-content">
-            <div class="why-us-text">
-                <h2>Why La Verne Businesses Choose Us</h2>
-                <div class="value-prop">
-                    <div class="icon">🌟</div>
-                    <h3>Complete Transparency</h3>
-                    <p>No hidden fees, no surprises. We believe in open communication and clear pricing, building trust through honesty.</p>
-                </div>
-                <div class="value-prop">
-                    <div class="icon">💰</div>
-                    <h3>Cost Savings Through Partnership</h3>
-                    <p>We optimize your IT spending, eliminate waste, and help you make smart technology investments that deliver ROI.</p>
-                </div>
-                <div class="value-prop">
-                    <div class="icon">🎩</div>
-                    <h3>White Glove Support</h3>
-                    <p>Experience premium service with personalized attention, proactive solutions, and a team that truly cares about your success.</p>
-                </div>
-                <div class="value-prop">
-                    <div class="icon">🚨</div>
-                    <h3>Always Available</h3>
-                    <p>Your business doesn't stop, and neither do we. Round-the-clock support ensures you're never left without help.</p>
-                </div>
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="why-container">
+            <div class="why-content">
+                <h2>Why La Verne Businesses Choose CircuitPoint</h2>
+                <p>We're not just another IT vendor. We're your technology partner, committed to transparency, reliability, and your success.</p>
+                <a href="about.html" class="btn-primary">Learn More About Us</a>
             </div>
-            <div class="stats">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="number">99.9%</div>
-                        <div class="label">Uptime Guarantee</div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">🌟</div>
+                    <div class="feature-text">
+                        <h3>Complete Transparency</h3>
+                        <p>No hidden fees. Clear communication. Honest partnerships built on trust.</p>
                     </div>
-                    <div class="stat-card">
-                        <div class="number">24/7</div>
-                        <div class="label">Support Availability</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-text">
+                        <h3>Cost Optimization</h3>
+                        <p>Smart technology investments that deliver real ROI for your business.</p>
                     </div>
-                    <div class="stat-card">
-                        <div class="number">30%</div>
-                        <div class="label">Average Cost Savings</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎩</div>
+                    <div class="feature-text">
+                        <h3>White Glove Support</h3>
+                        <p>Premium service with personalized attention and proactive solutions.</p>
                     </div>
-                    <div class="stat-card">
-                        <div class="number">&lt;15min</div>
-                        <div class="label">Response Time</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚨</div>
+                    <div class="feature-text">
+                        <h3>Always Available</h3>
+                        <p>Round-the-clock support ensures you're never without help when you need it.</p>
                     </div>
                 </div>
             </div>
@@ -789,103 +678,35 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="contact-content">
+        <div class="contact-container">
             <h2>Ready to Transform Your IT?</h2>
-            <p>Let's discuss how we can help your business thrive with transparent, reliable IT solutions</p>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i>📍</i>
-                    <h4>Location</h4>
+            <p>Let's discuss how we can help your business thrive with reliable technology solutions</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">📍</div>
+                    <h3>Location</h3>
                     <p>La Verne, CA</p>
-                    <p>Serving Southern California</p>
                 </div>
-                <div class="contact-item">
-                    <i>📞</i>
-                    <h4>Call Us</h4>
+                <div class="contact-card">
+                    <div class="contact-card-icon">📞</div>
+                    <h3>Phone</h3>
                     <p>(951) 579-0100</p>
-                    <p>24/7 Support Line</p>
                 </div>
-                <div class="contact-item">
-                    <i>✉️</i>
-                    <h4>Email</h4>
-                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95fdf0f9f9fad5f6fce7f6e0fce1e5fafcfbe1f9f9f6bbf6faf8">[email&#160;protected]</a></p>
-                    <p>Quick Response Guaranteed</p>
+                <div class="contact-card">
+                    <div class="contact-card-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>hello@circuitpoint.com</p>
                 </div>
             </div>
-            <a href="/cdn-cgi/l/email-protection#69010c050506290a001b0a1c001d190600071d470a0604" class="cta-button" style="background: white; color: var(--primary-blue); font-size: 1.125rem; padding: 0.75rem 2rem;">Schedule Your Free Consultation</a>
+            
+            <a href="mailto:hello@circuitpoint.com" class="btn-primary" style="font-size: 1.125rem; padding: 0.875rem 2.5rem;">Schedule Free Consultation</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 CircuitPoint. All rights reserved. | Proudly serving La Verne and surrounding communities</p>
+        <p>&copy; 2025 CircuitPoint. All rights reserved. | Proudly serving La Verne and Southern California</p>
     </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
-            }
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            }
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Observe stat cards
-        
+</body>
+</html>
