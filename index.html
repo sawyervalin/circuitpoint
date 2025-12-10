@@ -91,6 +91,26 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .btn-primary:hover {
@@ -104,6 +124,272 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: var(--white);
             margin-top: 73px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated Grid Background */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.5;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Animated gradient overlay */
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: rotateGradient 15s linear infinite;
+        }
+        
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Circuit board pattern */
+        .hero-circuit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+        }
+        
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            height: 2px;
+            width: 100%;
+            animation: scanline 8s linear infinite;
+        }
+        
+        .circuit-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .circuit-line:nth-child(2) { top: 40%; animation-delay: 2s; animation-direction: reverse; }
+        .circuit-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+        .circuit-line:nth-child(4) { top: 80%; animation-delay: 6s; animation-direction: reverse; }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Vertical circuit lines */
+        .circuit-line-vertical {
+            position: absolute;
+            background: linear-gradient(180deg, transparent, #60a5fa, transparent);
+            width: 2px;
+            height: 100%;
+            animation: scanlineVertical 10s linear infinite;
+        }
+        
+        .circuit-line-vertical:nth-child(5) { left: 15%; animation-delay: 1s; }
+        .circuit-line-vertical:nth-child(6) { left: 35%; animation-delay: 3s; animation-direction: reverse; }
+        .circuit-line-vertical:nth-child(7) { left: 55%; animation-delay: 5s; }
+        .circuit-line-vertical:nth-child(8) { left: 75%; animation-delay: 7s; animation-direction: reverse; }
+        .circuit-line-vertical:nth-child(9) { left: 85%; animation-delay: 2s; }
+        
+        @keyframes scanlineVertical {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* Network connection nodes */
+        .hero-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .network-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #3b82f6;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .network-node:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .network-node:nth-child(2) { top: 25%; left: 85%; animation-delay: 0.5s; }
+        .network-node:nth-child(3) { top: 45%; left: 20%; animation-delay: 1s; }
+        .network-node:nth-child(4) { top: 55%; left: 75%; animation-delay: 1.5s; }
+        .network-node:nth-child(5) { top: 75%; left: 40%; animation-delay: 2s; }
+        .network-node:nth-child(6) { top: 85%; left: 90%; animation-delay: 2.5s; }
+        .network-node:nth-child(7) { top: 35%; left: 50%; animation-delay: 0.8s; }
+        .network-node:nth-child(8) { top: 65%; left: 65%; animation-delay: 1.8s; }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+        
+        /* Hexagon tech pattern */
+        .hero-hexagons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+        }
+        
+        .hexagon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            animation: floatHex 15s ease-in-out infinite;
+        }
+        
+        .hexagon::before {
+            content: "⬡";
+            font-size: 60px;
+            color: #3b82f6;
+        }
+        
+        .hexagon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; animation-duration: 12s; }
+        .hexagon:nth-child(2) { top: 30%; left: 80%; animation-delay: 2s; animation-duration: 15s; }
+        .hexagon:nth-child(3) { top: 60%; left: 15%; animation-delay: 4s; animation-duration: 18s; }
+        .hexagon:nth-child(4) { top: 80%; left: 70%; animation-delay: 1s; animation-duration: 14s; }
+        .hexagon:nth-child(5) { top: 40%; left: 90%; animation-delay: 3s; animation-duration: 16s; }
+        
+        @keyframes floatHex {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+        }
+        
+        /* Spotlight beams */
+        .hero-spotlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .spotlight-beam {
+            position: absolute;
+            width: 2px;
+            height: 200%;
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(59, 130, 246, 0.4) 30%, 
+                rgba(59, 130, 246, 0.6) 50%, 
+                rgba(59, 130, 246, 0.4) 70%, 
+                transparent 100%);
+            filter: blur(2px);
+            animation: sweepSpotlight 12s ease-in-out infinite;
+            transform-origin: top center;
+        }
+        
+        .spotlight-beam:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .spotlight-beam:nth-child(2) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+        
+        .spotlight-beam:nth-child(3) {
+            left: 80%;
+            animation-delay: 8s;
+        }
+        
+        @keyframes sweepSpotlight {
+            0%, 100% {
+                transform: translateX(-100px) rotate(-15deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(100px) rotate(15deg);
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        /* Data stream effect */
+        .data-stream {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .data-bit {
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            animation: dataBitFlow 6s linear infinite;
+            opacity: 0.6;
+        }
+        
+        .data-bit:nth-child(1) { top: 25%; animation-delay: 0s; }
+        .data-bit:nth-child(2) { top: 45%; animation-delay: 1.5s; }
+        .data-bit:nth-child(3) { top: 65%; animation-delay: 3s; }
+        .data-bit:nth-child(4) { top: 35%; animation-delay: 4.5s; }
+        
+        @keyframes dataBitFlow {
+            0% {
+                left: -50px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                left: 110%;
+                opacity: 0;
+            }
         }
         
         .hero-container {
@@ -113,6 +399,8 @@
             grid-template-columns: 1.2fr 1fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 10;
         }
         
         .hero h1 {
@@ -177,6 +465,40 @@
             padding: 1.5rem;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .stat-box:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .stat-box::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .stat-box:hover::after {
+            opacity: 1;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
         
         .stat-number {
@@ -189,6 +511,54 @@
         .stat-label {
             color: #94a3b8;
             font-size: 0.95rem;
+        }
+        
+        /* Floating Particles */
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(59, 130, 246, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 15s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 20s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 16s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 19s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 17s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 21s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; animation-duration: 15s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; animation-duration: 18s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 3.5s; animation-duration: 16s; }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
         }
         
         /* Trust Bar */
@@ -223,6 +593,48 @@
             gap: 0.75rem;
             font-weight: 600;
             color: var(--text-medium);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .badge:nth-child(1) { animation-delay: 0.2s; }
+        .badge:nth-child(2) { animation-delay: 0.3s; }
+        .badge:nth-child(3) { animation-delay: 0.4s; }
+        .badge:nth-child(4) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero text animations */
+        .hero h1 {
+            animation: fadeInScale 0.8s ease;
+        }
+        
+        .hero p {
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-buttons {
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
         .badge-icon {
@@ -502,6 +914,69 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Spotlight beams -->
+        <div class="hero-spotlight">
+            <div class="spotlight-beam"></div>
+            <div class="spotlight-beam"></div>
+            <div class="spotlight-beam"></div>
+        </div>
+        
+        <!-- Data stream -->
+        <div class="data-stream">
+            <div class="data-bit"></div>
+            <div class="data-bit"></div>
+            <div class="data-bit"></div>
+            <div class="data-bit"></div>
+        </div>
+        
+        <!-- Circuit board animation -->
+        <div class="hero-circuit">
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line-vertical"></div>
+            <div class="circuit-line-vertical"></div>
+            <div class="circuit-line-vertical"></div>
+            <div class="circuit-line-vertical"></div>
+            <div class="circuit-line-vertical"></div>
+        </div>
+        
+        <!-- Network nodes -->
+        <div class="hero-network">
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+        </div>
+        
+        <!-- Hexagon pattern -->
+        <div class="hero-hexagons">
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+            <div class="hexagon"></div>
+        </div>
+        
+        <!-- Original particles -->
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="hero-container">
             <div>
                 <h1>Transparent IT Solutions for Modern Businesses</h1>
@@ -708,5 +1183,187 @@
     <footer>
         <p>&copy; 2025 CircuitPoint. All rights reserved. | Proudly serving La Verne and Southern California</p>
     </footer>
+
+    <script>
+        // Create canvas for network connections
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.opacity = '0.3';
+        
+        const heroSection = document.querySelector('.hero');
+        heroSection.insertBefore(canvas, heroSection.firstChild);
+        
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = heroSection.offsetWidth;
+            canvas.height = heroSection.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Animate connection lines between nodes
+        function drawConnections() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const nodes = document.querySelectorAll('.network-node');
+            const nodePositions = [];
+            
+            nodes.forEach(node => {
+                const rect = node.getBoundingClientRect();
+                const heroRect = heroSection.getBoundingClientRect();
+                nodePositions.push({
+                    x: rect.left - heroRect.left + 4,
+                    y: rect.top - heroRect.top + 4
+                });
+            });
+            
+            // Draw lines between nearby nodes
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.3)';
+            ctx.lineWidth = 1;
+            
+            for (let i = 0; i < nodePositions.length; i++) {
+                for (let j = i + 1; j < nodePositions.length; j++) {
+                    const dx = nodePositions[j].x - nodePositions[i].x;
+                    const dy = nodePositions[j].y - nodePositions[i].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 400) {
+                        const opacity = 1 - (distance / 400);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.4})`;
+                        ctx.beginPath();
+                        ctx.moveTo(nodePositions[i].x, nodePositions[i].y);
+                        ctx.lineTo(nodePositions[j].x, nodePositions[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(drawConnections);
+        }
+        
+        // Start animation after a brief delay
+        setTimeout(() => {
+            drawConnections();
+        }, 100);
+
+        // Animated Number Counter
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Animate stat numbers
+                    if (entry.target.classList.contains('stat-number')) {
+                        const text = entry.target.textContent;
+                        if (text === '99.9%') {
+                            let current = 0;
+                            const timer = setInterval(() => {
+                                current += 0.1;
+                                if (current >= 99.9) {
+                                    entry.target.textContent = '99.9%';
+                                    clearInterval(timer);
+                                } else {
+                                    entry.target.textContent = current.toFixed(1) + '%';
+                                }
+                            }, 20);
+                        } else if (text === '24/7') {
+                            entry.target.textContent = '24/7';
+                        } else if (text === '30%') {
+                            let current = 0;
+                            const timer = setInterval(() => {
+                                current += 1;
+                                if (current >= 30) {
+                                    entry.target.textContent = '30%';
+                                    clearInterval(timer);
+                                } else {
+                                    entry.target.textContent = current + '%';
+                                }
+                            }, 50);
+                        } else if (text.includes('15min')) {
+                            entry.target.textContent = '<15min';
+                        }
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all stat numbers
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            stat.style.opacity = '0';
+            stat.style.transform = 'translateY(20px)';
+            stat.style.transition = 'all 0.6s ease';
+            observer.observe(stat);
+        });
+
+        // Observe service cards for staggered entrance
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Observe feature items
+        document.querySelectorAll('.feature-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-30px)';
+            item.style.transition = `all 0.6s ease ${index * 0.15}s`;
+            observer.observe(item);
+        });
+
+        // Add animate-in class styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) translateX(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
