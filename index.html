@@ -1284,9 +1284,9 @@
                     if (entry.target.classList.contains('stat-number')) {
                         const text = entry.target.textContent;
                         if (text === '99.9%') {
-                            let current = 50.0;
+                            let current = 90.0;
                             const timer = setInterval(() => {
-                                current += 0.1;
+                                current += 0.3;
                                 if (current >= 99.9) {
                                     entry.target.textContent = '99.9%';
                                     clearInterval(timer);
